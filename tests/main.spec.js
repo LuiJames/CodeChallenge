@@ -9,7 +9,7 @@ import { PayBillPage } from '../js_files/PayBillPage';
 
 const config = require('../js_files/config');
 
-test("Validate User Can Register And Do Transactions In Parabank Site", async ({page}) => {
+test("Validate User Can Register And Do Transactions In Parabank Site", async ({page, request}) => {
 
     const login = new LogInPage(page);
     const register = new RegisterPage(page);
@@ -69,13 +69,12 @@ test("Validate User Can Register And Do Transactions In Parabank Site", async ({
 // 8. Pay the bill with account created in step 5.
     await bill.payBills(config.pay_other_account, new_account_id, config.pay_amount );
 
+// 9. API Test: Search transaction
+    const getUrl = `${config.requestUrl}${new_account_id}/transactions/amount/${config.pay_amount}?timeout=30000`;
+    console.log('API URL:', getUrl);
 
-
-
-
-
-
-
-
+    const response = await request.get(getUrl);
+    const responseText = await response.text();
+    console.log('Response body:', responseText);
 
 })

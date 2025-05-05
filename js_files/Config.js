@@ -3,6 +3,9 @@ module.exports = {
     // Base URL
     baseUrl : 'https://parabank.parasoft.com/',
 
+    // Request URL
+    requestUrl :    'https://parabank.parasoft.com/parabank/services_proxy/bank/accounts/',
+
     // User Credentials
     user_fname :    'testFname', 
     user_lname :    'testLname',
@@ -33,9 +36,9 @@ module.exports = {
     new_account_type :  'SAVINGS',
 
     // Transfer Amount
-    amount_transfer :   '150.0',
+    amount_transfer :   '50',
 
     // Pay Bill
     pay_other_account : '12345',
-    pay_amount :        '75.0',
+    pay_amount :        '10',
 }
